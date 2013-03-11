@@ -66,7 +66,23 @@ def run(sessions, eventList, eyetrackList):
         movieframe.save(compdir + str(i) + ".png", "PNG")
         i += 1
     print "Done! Find your composite frames here:\n", compdir
-    # TODO: Make dots on heatmap images bigger, they don't show up well when composited into the movie frames.
 
     # TODO: recomposite images into video
     # ffmpeg -f image2 -r 4 -i CT13C39DD417BLYWHILLT-SJJ-gaze-comp-%4d.png -vcodec mpeg4 -r 30 CT13C39DD417BLYWHILLT-SJJ-gaze-overlay.mp4
+    args = {
+            "fps":          12,
+            "inputfilesmask":    compdir + "%d.png",
+            "outputfilename": tempdir + "/" + eyetrackList[0]["ContentID"] + "-gaze_composite.mp4"
+            }
+
+    command = "ffmpeg -f image2 -r %(fps)d -i %(inputfilesmask)s -vcodec mpeg4 -r 30 %(outputfilename)s" % args
+    print("Now lets pull all those images into a movie for your gazing enjoyment")
+    # TODO: Figure out why making this movie hangs python...
+    #    it's worked before. It only hangs sometimes.  Memory issues? I think my machine has memory issues.
+    ffmpeg_proc = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    io = ffmpeg_proc.communicate()
+    print(io[0])
+    if not io[1] == None: print "Houston, we had a problem. with ffmpeg"  # TODO: Automagically troubleshoot ffmpeg
+    else:
+        print "Success! Your gaze movie is located here:\n", args["outputfilename"]
+

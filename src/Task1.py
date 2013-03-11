@@ -58,7 +58,7 @@ def makeMap(eyetrackList, filename="heatmap.png", background_color=(0, 0, 0, 0))
     img = Image.new("RGBA", (W, H), background_color)
     draw = ImageDraw.Draw(img)
     img.save(filename, "PNG")
-    r = 1
+    r = 20
     low = d["range"]["low"]
     high = d["range"]["high"]
 

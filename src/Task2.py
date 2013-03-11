@@ -60,7 +60,7 @@ def generateGazeFrames(eyetrackList, dirname="./gaze_frames/", granularity=250):
 
 def run(sessions, eventList, eyetrackList):
     # Get the directory to use
-    defaultdirname = tempfile.gettempdir()
+    defaultdirname = tempfile.mkdtemp()
     dirname = raw_input("In what directory should I store your movie?\n")
     if dirname == '':
         dirname = defaultdirname
