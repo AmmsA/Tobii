@@ -1,0 +1,26 @@
+{
+  "mainFile": "Instructions.py", 
+  "venv": "", 
+  "relatedProjects": [], 
+  "name": "src", 
+  "license": "", 
+  "url": "", 
+  "pythonPath": "/System/Library/Frameworks/Python.framework/Versions/2.7/bin/python2.7", 
+  "preExecScript": "", 
+  "programParams": "", 
+  "PYTHONPATH": "", 
+  "supported-extensions": [
+    ".py", 
+    ".html", 
+    ".jpg", 
+    ".png", 
+    ".ui", 
+    ".css", 
+    ".json", 
+    ".js", 
+    ".ini"
+  ], 
+  "project-type": "", 
+  "postExecScript": "", 
+  "description": ""
+}
